@@ -1,0 +1,2 @@
+# indeksownik
+Odkoduj indeksy
