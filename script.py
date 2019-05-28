@@ -82,7 +82,7 @@ def saveAsCSV():
         if notFoundIndexes() :
             file.write("\n\nBrak danych o indeksach\n")
             for p in notFound:
-                file.write(p)
+                file.write(p+"\n")
 
 
 
