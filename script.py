@@ -46,8 +46,10 @@ def findInDatabase():
     global savedIndexes
     savedIndexes = []
     for index in list:
+        inDatabase = False
         for row in database:
             if index == row[1]:
+                inDatabase = True
                 person = ""
                 person += row[1] + ";"
                 person += row[2] + ";"
@@ -59,18 +61,32 @@ def findInDatabase():
                 person += row[8]
                 referenceTable.append(person)
                 savedIndexes.append(index)
+        if inDatabase == False:
+            person = ""
+            person += index + ";"
+            person += ";"
+            person += ";"
+            person += ";"
+            person += ";"
+            person += ";"
+            person += ";"
+            referenceTable.append(person)
+            savedIndexes.append(index)
+
                 #print(referenceTable)
     #print(database[0][1])
-def notFoundIndexes():
-    global notFound
-    notFound = []
-    for person in list:
-        if person not in savedIndexes:
-            notFound.append(person)
-    if len(notFound) > 0:
-        return True
-    else:
-        return False
+#def notFoundIndexes():
+#    global notFound
+#    notFound = []
+#    for person in list:
+#        if person not in savedIndexes:
+#            notFound.append(person)
+#    if len(notFound) > 0:
+#        return True
+#    else:
+#        return False
+
+
 
 
 def saveAsCSV():
@@ -79,10 +95,10 @@ def saveAsCSV():
         for person in referenceTable:
             file.write(person)
             file.write('\n')
-        if notFoundIndexes() :
-            file.write("\n\nBrak danych o indeksach\n")
-            for p in notFound:
-                file.write(p+"\n")
+        #if notFoundIndexes() :
+        #    file.write("\n\nBrak danych o indeksach\n")
+        #    for p in notFound:
+        #        file.write(p+"\n")
 
 
 
